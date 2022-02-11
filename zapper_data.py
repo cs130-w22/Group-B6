@@ -192,3 +192,12 @@ class ZapperBalance(object):
                     self.logger.info(f'Waiting for the next trigger: {next_time.strftime("%Y-%m-%d %H:%M")}')
                     waiting = True
                 time.sleep(60)
+
+
+if __name__ == '__main__':    
+    zb=ZapperBalance()
+    zb.process(network='ethereum')
+    pp.pprint(zb.get_wallet_tokens())
+    zb.get_convex_tokens()
+    
+    zb.cron_trigger("0 * * * *")
