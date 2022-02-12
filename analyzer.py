@@ -42,7 +42,7 @@ class Analyzer():
             result_df = result_df.append(cur_row, ignore_index=True)
             # print(result_df[pool+'_volume'].iloc[-1])
         # print(result_df)
-        # result_df.to_excel('defi-result2.xlsx')
+        result_df.to_excel('defi-result.xlsx')
         return result_df
 
 if __name__ == '__main__':

@@ -8,10 +8,6 @@ import pandas as pd
 import pprint as pp
 from croniter import croniter
 from datetime import datetime, timedelta, timezone
-import dash
-import dash_html_components as html
-import dash_core_components as dcc
-import plotly.express as px
 
 
 def get_cur_time(): # NYC timezone
