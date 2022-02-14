@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 function Home() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
+    const [currAddress, setCurrAddress] = useState('0x123');
 
     return <div className={classes.background}>
         <Header visitor={false} search={true}/>
@@ -41,9 +42,9 @@ function Home() {
                     <AssessmentIcon sx={{marginTop: '10px', marginLeft: '15px', color: 'white'}} fontSize={'medium'}/>
                 </IconButton>
             </Grid>
-            <Grid container item xs={11} direction={'column'} sx={{backgroundColor: 'green', marginTop: '10px'}}>
+            <Grid container item xs={11} direction={'column'} sx={{}}>
                 <Grid item xs={12}>
-                    { page === 0 ? <Overview/> : page === 1 ? <Search/> : page === 2 ? <Analytics/> : <Report/> }
+                    { page === 0 ? <Overview setCurrAddress={setCurrAddress} currAddress={currAddress}/> : page === 1 ? <Search address={currAddress}/> : page === 2 ? <Analytics/> : <Report/> }
                 </Grid>
             </Grid>
         </Grid>
