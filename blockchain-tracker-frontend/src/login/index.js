@@ -31,7 +31,7 @@ const StyledTextField = styled(TextField)({
         borderColor: "grey"
     },
     [`& .${outlinedInputClasses.input}`]: {
-        color: "grey"
+        color: "white"
     },
     [`&:hover .${outlinedInputClasses.input}`]: {
         color: "grey"
@@ -50,8 +50,8 @@ const StyledTextField = styled(TextField)({
     }
 });
 
-const title = "Blockchain Tracker";
-const subtitle = "Login to start your journal today";
+const title = "LOGIN";
+const subtitle = "Your new adventure starts here";
 
 function Login() {
     const classes = useStyles();
@@ -67,9 +67,9 @@ function Login() {
                     <Typography color={"#868383"} variant="body">{subtitle}</Typography>
                 </Grid>
                 <Grid item container direction={"column"} xs={6}>
-                    <StyledTextField className={classes.input} value={email} size={"small"} onChange={(e) => setEmail(e.target.value)}/>
-                    <StyledTextField className={classes.input} value={password} size={"small"} type={"password"} onChange={(e) => setPassword(e.target.value)}/>
-                    <Button variant="contained">Login</Button>
+                    <StyledTextField className={classes.input} value={email} placeholder="Email" size={"small"} onChange={(e) => setEmail(e.target.value)}/>
+                    <StyledTextField className={classes.input} value={password} placeholder="Password" size={"small"} type={"password"} onChange={(e) => setPassword(e.target.value)}/>
+                    <Button variant="contained">LOGIN</Button>
                 </Grid>
             </Grid>
         </Box>
