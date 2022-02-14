@@ -46,7 +46,7 @@ function Home() {
                 <Grid item xs={12}>
                     { page === 0 ? <Overview setSelectedAddress={setSelectedAddress} selectedAddress={selectedAddress}/>
                         : page === 1 ? <Search selectedAddress={selectedAddress}/>
-                            : page === 2 ? <Analytics/> : <Report selectedAddress={selectedAddress}/>
+                            : page === 2 ? <Analytics selectedAddress={selectedAddress}/> : <Report selectedAddress={selectedAddress}/>
                     }
                 </Grid>
             </Grid>
