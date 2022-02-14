@@ -16,14 +16,21 @@ const addresses = ['1x123', '1x124', '1x125']
 function Overview({setCurrAddress, currAddress}) {
     return <Grid item xs={12} md={6}>
         <Typography sx={{ mt: 4, mb: 2, fontWeight: 'bold', color: 'white' }} variant="h6">Selected Address:</Typography>
-        <Typography sx={{ mt: 2, mb: 2, color: 'white' }} variant="h6">{currAddress}</Typography>
+        <ListItem key={currAddress}>
+            <ListItemAvatar>
+                <Avatar sx={{background: 'white'}}>
+                    <HouseIcon  sx={{color: 'black'}}/>
+                </Avatar>
+            </ListItemAvatar>
+            <ListItemText sx={{color: 'white'}}> {currAddress} </ListItemText>
+        </ListItem>
         <Typography sx={{ mt: 4, mb: 2, fontWeight: 'bold', color: 'white' }} variant="h6">Tracked Addresses</Typography>
         <List>
             {
                 addresses.map((address) =>
                     <ListItem key={address}>
                         <ListItemAvatar>
-                            <Avatar sx={{background: 'white'}}>
+                            <Avatar sx={{background: 'grey'}}>
                                 <HouseIcon  sx={{color: 'black'}}/>
                             </Avatar>
                         </ListItemAvatar>
