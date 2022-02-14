@@ -26,7 +26,7 @@ function Home() {
     const [selectedAddress, setSelectedAddress] = useState('');
 
     return <div className={classes.background}>
-        <Header visitor={false} search={true} setSelectedAddress={setSelectedAddress}/>
+        <Header visitor={true} search={true} setSelectedAddress={setSelectedAddress}/>
         <Grid container>
             <Grid container item xs={1} direction={'column'} sx={{backgroundColor: 'black', alignItems: 'start'}}>
                 <IconButton onClick={() => setPage(0)}>

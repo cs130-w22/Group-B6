@@ -8,6 +8,7 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import SearchIcon from '@mui/icons-material/Search';
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const useStyles = makeStyles({
     title: {
@@ -46,9 +47,9 @@ function Header({visitor, search, setSelectedAddress}) {
                         <InputBase sx={{ ml: 1, flex: 1, width: 500}} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Search Addresses..." inputProps={{ 'aria-label': 'Search Addresses...' }}/>
                     </Box>
                 }
-                <IconButton href={visitor ? "/login" : "/login"}>
-                    { visitor ?  <LoginIcon/> :  <FaceIcon/> }
-                </IconButton>
+                { visitor && <IconButton href={"/signup"}><HowToRegIcon/></IconButton> }
+                { visitor && <IconButton href={"/login"}><LoginIcon/></IconButton> }
+                { !visitor && <IconButton href={"/"}><FaceIcon/></IconButton> }
             </Toolbar>
         </AppBar>
     )
