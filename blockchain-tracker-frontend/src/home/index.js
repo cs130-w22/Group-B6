@@ -23,10 +23,10 @@ const useStyles = makeStyles({
 function Home() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
-    const [currAddress, setCurrAddress] = useState('0x123');
+    const [selectedAddress, setSelectedAddress] = useState('');
 
     return <div className={classes.background}>
-        <Header visitor={false} search={true}/>
+        <Header visitor={false} search={true} setSelectedAddress={setSelectedAddress}/>
         <Grid container>
             <Grid container item xs={1} direction={'column'} sx={{backgroundColor: 'black', alignItems: 'start'}}>
                 <IconButton onClick={() => setPage(0)}>
@@ -44,7 +44,10 @@ function Home() {
             </Grid>
             <Grid container item xs={11} direction={'column'} sx={{}}>
                 <Grid item xs={12}>
-                    { page === 0 ? <Overview setCurrAddress={setCurrAddress} currAddress={currAddress}/> : page === 1 ? <Search address={currAddress}/> : page === 2 ? <Analytics/> : <Report/> }
+                    { page === 0 ? <Overview setSelectedAddress={setSelectedAddress} selectedAddress={selectedAddress}/>
+                        : page === 1 ? <Search selectedAddress={selectedAddress}/>
+                            : page === 2 ? <Analytics/> : <Report/>
+                    }
                 </Grid>
             </Grid>
         </Grid>

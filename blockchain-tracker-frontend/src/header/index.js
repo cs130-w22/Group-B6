@@ -7,6 +7,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import InsightsIcon from '@mui/icons-material/Insights';
 import SearchIcon from '@mui/icons-material/Search';
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 const useStyles = makeStyles({
     title: {
@@ -22,8 +23,15 @@ const useStyles = makeStyles({
     }
 })
 
-function Header(props) {
+function Header({visitor, search, setSelectedAddress}) {
     const classes = useStyles();
+    const [address, setAddress] = useState('');
+
+    function handleClick(){
+        setSelectedAddress(address);
+        setAddress('');
+    }
+
     return (
         <AppBar position="static" variant="simple">
             <Toolbar>
@@ -32,14 +40,14 @@ function Header(props) {
                     <Link className={classes.link} to={"/home"}>Blockchain Tracker</Link>
                 </Typography>
                 {
-                    props.search &&
+                    search &&
                     <Box bgcolor={"darkgrey"} marginRight={"20px"}>
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search"><SearchIcon /></IconButton>
-                        <InputBase sx={{ ml: 1, flex: 1, width: 500}} placeholder="Search Addresses..." inputProps={{ 'aria-label': 'Search Addresses...' }}/>
+                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={() => handleClick()}><SearchIcon /></IconButton>
+                        <InputBase sx={{ ml: 1, flex: 1, width: 500}} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Search Addresses..." inputProps={{ 'aria-label': 'Search Addresses...' }}/>
                     </Box>
                 }
-                <IconButton href={props.visitor ? "/login" : "/login"}>
-                    { props.visitor ?  <LoginIcon/> :  <FaceIcon/> }
+                <IconButton href={visitor ? "/login" : "/login"}>
+                    { visitor ?  <LoginIcon/> :  <FaceIcon/> }
                 </IconButton>
             </Toolbar>
         </AppBar>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import {Box, Button, FormControl, InputLabel, MenuItem, Select, Typography} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 
 const columns = [
@@ -28,18 +28,11 @@ const rows = [
     { id: 11, time: '2021-12-03 20:00', network: 'ethereum', protocol: 'N/A', category: 'wallet', name: 'ETC', price: 4168.06, quantity: 0.086, value: 356.719 },
 ];
 
-const trackedAddresses = ['0x123', '0x124', '0x125'];
-
-function Search({address}) {
-    const [age, setAge] = React.useState('');
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
-
+function Search({selectedAddress}) {
     return (
         <div style={{ height: 500, width: '100%', color: 'grey'}}>
-            <Box sx={{display: 'flex', marginTop: '10px'}}>
-                <Typography sx={{ mt: 2, mb: 2, flex: 1, fontWeight: 'bold', color: 'white' }} variant="h6">Address Information: {address}</Typography>
+            <Box sx={{display: 'flex', marginTop: '20px'}}>
+                <Typography sx={{ mt: 2, mb: 2, flex: 1, fontWeight: 'bold', color: 'white' }} variant="h6">Address Information: {selectedAddress}</Typography>
                 <Button variant="outlined" startIcon={<AddIcon />}
                         sx={{
                             backgroundColor: 'white',
