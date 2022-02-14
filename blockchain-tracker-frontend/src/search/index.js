@@ -30,7 +30,7 @@ const rows = [
 
 function Search({selectedAddress}) {
     return (
-        <div style={{ height: 500, width: '100%', color: 'grey'}}>
+        <div style={{ height: '100%', width: '100%', color: 'grey'}}>
             <Box sx={{display: 'flex', marginTop: '20px'}}>
                 <Typography sx={{ mt: 2, mb: 2, flex: 1, fontWeight: 'bold', color: 'white' }} variant="h6">Address Information: {selectedAddress}</Typography>
                 <Button variant="outlined" startIcon={<AddIcon />}

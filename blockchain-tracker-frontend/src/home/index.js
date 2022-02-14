@@ -4,7 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import DataUsageIcon from '@mui/icons-material/DataUsage';
-import {Grid, IconButton} from "@mui/material";
+import {Box, Grid, IconButton} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import Analytics from "../analytics";
 import {useState} from "react";
@@ -25,7 +25,7 @@ function Home() {
     const [page, setPage] = useState(0);
     const [selectedAddress, setSelectedAddress] = useState('');
 
-    return <div className={classes.background}>
+    return <Box className={classes.background}>
         <Header visitor={true} search={true} setSelectedAddress={setSelectedAddress}/>
         <Grid container>
             <Grid container item xs={1} direction={'column'} sx={{backgroundColor: 'black', alignItems: 'start'}}>
@@ -51,7 +51,7 @@ function Home() {
                 </Grid>
             </Grid>
         </Grid>
-    </div>
+    </Box>
 }
 
 export default Home;
