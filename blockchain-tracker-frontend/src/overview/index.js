@@ -1,12 +1,43 @@
 import * as React from 'react';
-import {Avatar, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
+import {
+    Avatar, Box,
+    Button,
+    Grid,
+    IconButton,
+    List,
+    ListItem,
+    ListItemAvatar,
+    ListItemText,
+    Typography
+} from "@mui/material";
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import HouseIcon from '@mui/icons-material/House';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import {trackedAddresses} from "./function";
+import {useState} from "react";
+import Dialogue from "../component/dialogue";
 
-const addresses = ['1x123', '1x124', '1x125']
+function Overview({setSelectedAddress, selectedAddress, token}) {
+    const [addresses, setAddresses] = useState(['1x123', '1x124', '1x125']);
+    const [open, setOpen] = useState(false)
 
-function Overview({setSelectedAddress, selectedAddress}) {
+    async function handleUpdate() {
+        if (token === '') {
+            setOpen(true)
+            return
+        }
+
+        const data = {
+            token: token
+        }
+
+        //TODO: store actual addresses
+        const result = await trackedAddresses(data);
+        setAddresses(addresses.concat(['1x123']));
+    }
+
     return <Grid item xs={12} md={6}>
+        <Dialogue open={open} setOpen={setOpen} title={"Blockchain Tracker"} content={"login first to see tracked addresses"}/>
         <Typography sx={{ mt: 4, mb: 2, fontWeight: 'bold', color: 'white' }} variant="h6">Selected Address:</Typography>
         <ListItem key={selectedAddress}>
             <ListItemAvatar>
@@ -16,7 +47,24 @@ function Overview({setSelectedAddress, selectedAddress}) {
             </ListItemAvatar>
             <ListItemText sx={{color: 'white'}}> {selectedAddress} </ListItemText>
         </ListItem>
-        <Typography sx={{ mt: 4, mb: 2, fontWeight: 'bold', color: 'white' }} variant="h6">Tracked Addresses</Typography>
+        <Box sx={{display: 'flex'}}>
+            <Typography sx={{ mt: 4, mb: 2, fontWeight: 'bold', color: 'white' }} variant="h6">Tracked Addresses</Typography>
+            <Button variant="outlined" startIcon={<RefreshIcon />}
+                    onClick={() => handleUpdate()}
+                    sx={{
+                        backgroundColor: 'white',
+                        color: 'black',
+                        height: '30px',
+                        alignSelf: 'center',
+                        alignContent: 'center',
+                        textAlign: 'center',
+                        marginLeft: '20px',
+                        marginTop: '10px',
+                        '&:hover' : {
+                            background: 'darkgrey'
+                        }
+                    }}>UPDATE</Button>
+        </Box>
         <List>
             {
                 addresses.map((address) =>

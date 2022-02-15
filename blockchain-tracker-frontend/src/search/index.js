@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {track} from "./function";
 import Dialogue from "../component/dialogue";
 import {useState} from "react";
+import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 
 const columns = [
     { field: 'time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
@@ -35,7 +36,21 @@ function Search({selectedAddress, token}) {
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState('');
 
-    async function handleClick(selectedAddress) {
+    async function handleSearch(selectedAddress) {
+        if (selectedAddress === '') {
+            setContent("can't lookup empty address")
+            setOpen(true)
+            return
+        }
+        const data = {
+            address: selectedAddress
+        }
+        const result = await track(data);
+        result === null ? setContent("address information ready") : setContent("internal server error")
+        setOpen(true)
+    }
+
+    async function handleTrack(selectedAddress) {
         if (token === '') {
             setContent("login first to track an address")
             setOpen(true)
@@ -63,8 +78,23 @@ function Search({selectedAddress, token}) {
             <Dialogue open={open} setOpen={setOpen} title={"Blockchain Tracker"} content={content}/>
             <Box sx={{display: 'flex', marginTop: '20px'}}>
                 <Typography sx={{ mt: 2, mb: 2, flex: 1, fontWeight: 'bold', color: 'white' }} variant="h6">Address Information: {selectedAddress}</Typography>
+                <Button variant="outlined" startIcon={<ScreenSearchDesktopIcon />}
+                        onClick={() => handleSearch(selectedAddress)}
+                        sx={{
+                            backgroundColor: 'white',
+                            color: 'black',
+                            fontWeight: 'bold',
+                            height: '30px',
+                            padding: '10px 10px',
+                            alignSelf: 'center',
+                            marginRight: '50px',
+                            '&:hover' : {
+                                background: 'darkgrey'
+                            }
+                        }}
+                >LOOKUP ADDRESS</Button>
                 <Button variant="outlined" startIcon={<AddIcon />}
-                        onClick={() => handleClick(selectedAddress)}
+                        onClick={() => handleTrack(selectedAddress)}
                         sx={{
                             backgroundColor: 'white',
                             color: 'black',
@@ -85,7 +115,6 @@ function Search({selectedAddress, token}) {
                 pageSize={10}
                 rowsPerPageOptions={[10]}
                 disableSelectionOnClick={true}
-                autoHeight={true}
                 disableColumnSelector={true}
                 sx={{
                     color: 'black',
@@ -94,6 +123,8 @@ function Search({selectedAddress, token}) {
                     borderColor: 'grey',
                     borderRadius: '4px',
                     borderWidth: 'thin',
+                    backgroundColor: 'black',
+                    height: '70vh',
                     '& .MuiDataGrid-cell:hover': {
                         color: 'white',
                     },
