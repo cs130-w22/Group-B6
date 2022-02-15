@@ -26,7 +26,7 @@ function Home({token, setToken}) {
     const [selectedAddress, setSelectedAddress] = useState('');
 
     return <Box className={classes.background}>
-        <Header visitor={token === ''} search={true} setSelectedAddress={setSelectedAddress}/>
+        <Header visitor={token === ''} search={true} setSelectedAddress={setSelectedAddress} setToken={setToken}/>
         <Grid container>
             <Grid container item xs={1} direction={'column'} sx={{backgroundColor: 'black', alignItems: 'start'}}>
                 <IconButton onClick={() => setPage(0)}>

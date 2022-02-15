@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { makeStyles } from "@mui/styles";
-import {AppBar, Box, InputBase, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box, Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    InputBase,
+    Toolbar,
+    Typography
+} from "@mui/material";
 import { IconButton } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import FaceIcon from '@mui/icons-material/Face';
@@ -9,6 +19,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import DialogContentText from "@mui/material/DialogContentText";
 
 const useStyles = makeStyles({
     title: {
@@ -24,9 +35,42 @@ const useStyles = makeStyles({
     }
 })
 
-function Header({visitor, search, setSelectedAddress}) {
+function LogoutDialogue({open, setOpen, setToken}) {
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleLogoutClick = () => {
+        setOpen(false);
+        setToken('');
+    }
+
+    return <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+    >
+        <DialogTitle id="alert-dialog-title" sx={{fontWeight: 'bold', backgroundColor: 'darkgrey', width: '600px'}}>>
+            {"Blockchain Tracker"}
+        </DialogTitle>
+        <DialogContent sx={{backgroundColor: 'darkgrey'}}>
+            <DialogContentText id="alert-dialog-description">
+                Are you sure you want to logout? Your current session will be lost.
+                Your tracked addresses will be available at your next login.
+            </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{backgroundColor: 'darkgrey'}}>
+            <Button onClick={handleClose} sx={{color: 'black'}}>CANCEL</Button>
+            <Button onClick={handleLogoutClick} autoFocus sx={{color: 'black'}}>CONFIRM</Button>
+        </DialogActions>
+    </Dialog>
+}
+
+function Header({visitor, search, setSelectedAddress, setToken}) {
     const classes = useStyles();
     const [address, setAddress] = useState('');
+    const [open, setOpen] = useState(false)
 
     function handleClick(){
         setSelectedAddress(address);
@@ -34,24 +78,27 @@ function Header({visitor, search, setSelectedAddress}) {
     }
 
     return (
-        <AppBar position="static" variant="simple">
-            <Toolbar>
-                <InsightsIcon/>
-                <Typography to={"/"} className={classes.title} variant="h6">
-                    <Link className={classes.link} to={"/home"}>Blockchain Tracker</Link>
-                </Typography>
-                {
-                    search &&
-                    <Box bgcolor={"darkgrey"} marginRight={"20px"}>
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={() => handleClick()}><SearchIcon /></IconButton>
-                        <InputBase sx={{ ml: 1, flex: 1, width: 500}} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Search Addresses..." inputProps={{ 'aria-label': 'Search Addresses...' }}/>
-                    </Box>
-                }
-                { visitor && <IconButton href={"/signup"}><HowToRegIcon/></IconButton> }
-                { visitor && <IconButton href={"/login"}><LoginIcon/></IconButton> }
-                { !visitor && <IconButton href={"/"}><FaceIcon/></IconButton> }
-            </Toolbar>
-        </AppBar>
+        <div>
+            <LogoutDialogue open={open} setOpen={setOpen} setToken={setToken}/>
+            <AppBar position="static" variant="simple">
+                <Toolbar>
+                    <InsightsIcon/>
+                    <Typography to={"/"} className={classes.title} variant="h6">
+                        <Link className={classes.link} to={"/home"}>Blockchain Tracker</Link>
+                    </Typography>
+                    {
+                        search &&
+                        <Box bgcolor={"darkgrey"} marginRight={"20px"}>
+                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={() => handleClick()}><SearchIcon /></IconButton>
+                            <InputBase sx={{ ml: 1, flex: 1, width: 500}} value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Search Addresses..." inputProps={{ 'aria-label': 'Search Addresses...' }}/>
+                        </Box>
+                    }
+                    { visitor && <IconButton href={"/signup"}><HowToRegIcon/></IconButton> }
+                    { visitor && <IconButton href={"/login"}><LoginIcon/></IconButton> }
+                    { !visitor && <IconButton onClick={() => setOpen(true)}><FaceIcon/></IconButton> }
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }
 
