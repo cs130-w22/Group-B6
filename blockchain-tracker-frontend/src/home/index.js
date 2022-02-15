@@ -45,7 +45,7 @@ function Home({token, setToken}) {
             <Grid container item xs={11} direction={'column'} sx={{}}>
                 <Grid item xs={12}>
                     { page === 0 ? <Overview setSelectedAddress={setSelectedAddress} selectedAddress={selectedAddress}/>
-                        : page === 1 ? <Search selectedAddress={selectedAddress}/>
+                        : page === 1 ? <Search selectedAddress={selectedAddress} token={token}/>
                             : page === 2 ? <Analytics selectedAddress={selectedAddress}/> : <Report selectedAddress={selectedAddress}/>
                     }
                 </Grid>

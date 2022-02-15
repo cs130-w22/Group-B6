@@ -2,6 +2,9 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {Box, Button, Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import {track} from "./function";
+import Dialogue from "../component/dialogue";
+import {useState} from "react";
 
 const columns = [
     { field: 'time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
@@ -28,12 +31,40 @@ const rows = [
     { id: 11, time: '2021-12-03 20:00', network: 'ethereum', protocol: 'N/A', category: 'wallet', name: 'ETC', price: 4168.06, quantity: 0.086, value: 356.719 },
 ];
 
-function Search({selectedAddress}) {
+function Search({selectedAddress, token}) {
+    const [open, setOpen] = useState(false);
+    const [content, setContent] = useState('');
+
+    async function handleClick(selectedAddress) {
+        if (token === '') {
+            setContent("login first to track an address")
+            setOpen(true)
+            return
+        }
+
+        if (selectedAddress === '') {
+            setContent("please search for a valid address")
+            setOpen(true)
+            return
+        }
+
+        const data = {
+            token: token,
+            address: selectedAddress
+        }
+
+        const result = await track(data);
+        result === null ? setContent("start tracking") : setContent("you already tracked this address")
+        setOpen(true)
+    }
+
     return (
         <div style={{ height: '100%', width: '100%', color: 'grey'}}>
+            <Dialogue open={open} setOpen={setOpen} title={"Blockchain Tracker"} content={content}/>
             <Box sx={{display: 'flex', marginTop: '20px'}}>
                 <Typography sx={{ mt: 2, mb: 2, flex: 1, fontWeight: 'bold', color: 'white' }} variant="h6">Address Information: {selectedAddress}</Typography>
                 <Button variant="outlined" startIcon={<AddIcon />}
+                        onClick={() => handleClick(selectedAddress)}
                         sx={{
                             backgroundColor: 'white',
                             color: 'black',

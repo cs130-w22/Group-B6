@@ -51,13 +51,12 @@ function LogoutDialogue({open, setOpen, setToken}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
     >
-        <DialogTitle id="alert-dialog-title" sx={{fontWeight: 'bold', backgroundColor: 'darkgrey', width: '600px'}}>>
+        <DialogTitle id="alert-dialog-title" sx={{fontWeight: 'bold', backgroundColor: 'darkgrey', width: '600px'}}>
             {"Blockchain Tracker"}
         </DialogTitle>
         <DialogContent sx={{backgroundColor: 'darkgrey'}}>
             <DialogContentText id="alert-dialog-description">
-                Are you sure you want to logout? Your current session will be lost.
-                Your tracked addresses will be available at your next login.
+                Are you sure you want to logout?
             </DialogContentText>
         </DialogContent>
         <DialogActions sx={{backgroundColor: 'darkgrey'}}>
