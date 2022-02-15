@@ -20,6 +20,8 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import DialogContentText from "@mui/material/DialogContentText";
+import {validate} from "./function";
+import Dialogue from "../component/dialogue";
 
 const useStyles = makeStyles({
     title: {
@@ -68,16 +70,27 @@ function LogoutDialogue({open, setOpen, setToken}) {
 
 function Header({visitor, search, setSelectedAddress, setToken}) {
     const classes = useStyles();
-    const [address, setAddress] = useState('');
+    const [address, setAddress] = useState('')
     const [open, setOpen] = useState(false)
+    const [open2, setOpen2] = useState(false)
 
-    function handleClick(){
-        setSelectedAddress(address);
+    async function handleClick() {
+        //TODO: check if address is valid against db
+        const data = {
+            address : address
+        }
+        const result = await validate(data)
+        if (result === null) {
+            setOpen2(true)
+        } else {
+            setSelectedAddress(address);
+        }
         setAddress('');
     }
 
     return (
         <div>
+            <Dialogue open={open2} setOpen={setOpen2} title={"Blockchain Tracker"} content={"invalid address"}/>
             <LogoutDialogue open={open} setOpen={setOpen} setToken={setToken}/>
             <AppBar position="static" variant="simple">
                 <Toolbar>
