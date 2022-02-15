@@ -1,65 +1,41 @@
-import {makeStyles} from "@mui/styles";
-import {Box, Button, Grid, inputLabelClasses, outlinedInputClasses, TextField, Typography} from "@mui/material";
+import {Box, Button, Grid, Typography} from "@mui/material";
 import {useState} from "react";
-import styled from "@emotion/styled";
 import Header from "../header";
-
-const useStyles = makeStyles({
-    background: {
-        backgroundColor: "black",
-        width: "100vw",
-        height: "100vh",
-    },
-    grid: {
-        paddingTop: "40vh",
-        paddingLeft: "20vw",
-        paddingRight: "20vw",
-    },
-    input: {
-        marginBottom: "7px !important",
-    }
-})
-
-const StyledTextField = styled(TextField)({
-    [`& .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
-        borderColor: "grey"
-    },
-    [`&:hover .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
-        borderColor: "grey"
-    },
-    [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
-        borderColor: "grey"
-    },
-    [`& .${outlinedInputClasses.input}`]: {
-        color: "white"
-    },
-    [`&:hover .${outlinedInputClasses.input}`]: {
-        color: "grey"
-    },
-    [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
-        color: "grey"
-    },
-    [`& .${inputLabelClasses.outlined}`]: {
-        color: "grey"
-    },
-    [`&:hover .${inputLabelClasses.outlined}`]: {
-        color: "grey"
-    },
-    [`& .${inputLabelClasses.outlined}.${inputLabelClasses.focused}`]: {
-        color: "grey"
-    }
-});
+import {login} from "./function";
+import { Navigate } from 'react-router-dom';
+import useStyles from "../styles";
+import StyledTextField from "../component/input";
+import Dialogue from "../component/dialogue";
 
 const title = "LOGIN";
 const subtitle = "Your new adventure starts here";
 
-function Login() {
+function Login({token, setToken}) {
     const classes = useStyles();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [open, setOpen] = useState(false);
+
+    async function handleClick() {
+        const credentials = {
+            email: "test@gmail.com",
+            password: "test"
+        }
+        const result = await login(credentials);
+        //TODO: change this to address token from the server
+        if (result === null) {
+            setOpen(true);
+            setToken('some_token_from_result');
+        }
+    }
+
+    if (token && open === false) {
+        return <Navigate to={"/explore"}/>
+    }
 
     return <div>
         <Header visitor={true} search={false}/>
+        <Dialogue open={open} setOpen={setOpen} title={"Blockchain Tracker"} content={"login successful"}/>
         <Box className={classes.background}>
             <Grid className={classes.grid} container direction={"row"}>
                 <Grid item container xs={6} direction={"column"}>
@@ -69,7 +45,7 @@ function Login() {
                 <Grid item container direction={"column"} xs={6}>
                     <StyledTextField className={classes.input} value={email} placeholder="Email" size={"small"} onChange={(e) => setEmail(e.target.value)}/>
                     <StyledTextField className={classes.input} value={password} placeholder="Password" size={"small"} type={"password"} onChange={(e) => setPassword(e.target.value)}/>
-                    <Button variant="contained">LOGIN</Button>
+                    <Button onClick={() => handleClick()} variant="contained">LOGIN</Button>
                 </Grid>
             </Grid>
         </Box>
