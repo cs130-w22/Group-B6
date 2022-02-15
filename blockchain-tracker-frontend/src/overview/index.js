@@ -1,6 +1,8 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {
-    Avatar, Box,
+    Avatar,
+    Box,
     Button,
     Grid,
     IconButton,
@@ -14,12 +16,27 @@ import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import HouseIcon from '@mui/icons-material/House';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import {trackedAddresses} from "./function";
-import {useState} from "react";
 import Dialogue from "../component/dialogue";
 
 function Overview({setSelectedAddress, selectedAddress, token}) {
-    const [addresses, setAddresses] = useState(['1x123', '1x124', '1x125']);
+    const [addresses, setAddresses] = useState([]);
     const [open, setOpen] = useState(false)
+    const [mount, setMount] = useState(false)
+
+    useEffect(() => {
+        // declare the data fetching function
+        const fetchData = async () => {
+            const data = { token: token}
+            const result = await trackedAddresses(data);
+            setAddresses(['1x123', '1x124', '1x125'])
+        }
+
+        if (token !== '') {
+            fetchData().catch(console.error);
+        }
+        setMount(true)
+        // code to run on component mount
+    }, [mount])
 
     async function handleUpdate() {
         if (token === '') {
