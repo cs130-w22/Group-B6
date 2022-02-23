@@ -1,26 +1,26 @@
 import sqlite3
-import pymysql
+# import pymysql
 
 
 
 class Database():
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
-        # self.conn = pymysql.connect(host='rm-uf6z3yjw3719s70sbuo.mysql.rds.aliyuncs.com', user='bank_dev', password='072EeAb717e269bF',
-        #                      db='bank_dev')
         self.cursor = self.conn.cursor()
 
     def drop_table(self, table):
+        try:
+            sql = 'DROP TABLE ' + table
+            self.cursor.execute(sql)
+            self.conn.commit()
+        except Exception as e:
+            print(e)
         print(table, 'table is deleted.')
-        sql = 'DROP TABLE ' + table
-        self.cursor.execute(sql)
-        self.conn.commit()
 
     def show_table(self, table):
         sql = 'select * from ' + table
         self.cursor.execute(sql)
         res = self.cursor.fetchall()
-        # print(res)
         return res
 
     def close_db(self):
@@ -30,8 +30,9 @@ class Database():
         self.cursor.execute("select name from sqlite_master where type='table' order by name")
         table_lists = self.cursor.fetchall()
         if len(table_lists)>0:
-            print(table_lists)
-            if table in table_lists[0]:
+            table_lists = [i[0] for i in table_lists]
+            # print(table_lists)
+            if table in table_lists:
                 print('table already exist. skip create.')
                 return
         sql = 'CREATE TABLE ' + table + ' ('
@@ -53,7 +54,7 @@ class Database():
             sql += ')'
         sql += ' VALUES ('
         for v in vals:
-            sql += v+', '
+            sql += f'"{v}", '
         sql = sql[:-2]
         sql += ')'
         print(sql)
@@ -61,11 +62,11 @@ class Database():
         self.conn.commit()
 
 if __name__ == '__main__':
-
-    db = Database('test1.db')
+    db = Database('raw_data.db')
     # db.drop_table('REPORTS')
     db.create('REPORTS', ['BEGIN_DATE TEXT', 'END_DATE TEXT'])
     db.insert('REPORTS', ['20000101', '20000103'])
     res = db.show_table('reports')
     print(res)
     db.close_db()
+
