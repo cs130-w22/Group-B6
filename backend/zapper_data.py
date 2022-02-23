@@ -1,18 +1,21 @@
-from collections import defaultdict
-import pygsheets
-from urllib.request import urlopen, Request
 import json
-import time
 import logging
-import pandas as pd
 import pprint as pp
-from croniter import croniter
+import time
+from collections import defaultdict
 from datetime import datetime, timedelta, timezone
+from urllib.request import Request, urlopen
+
+import pandas as pd
+import pygsheets
+from croniter import croniter
+
+import sql as sql
 
 
 def get_cur_time(): # NYC timezone
     utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)
-    cur_time = utc_dt.astimezone(timezone(timedelta(hours=-5)))
+    cur_time = utc_dt.astimezone(timezone(timedelta(hours=-8))) # -5 is NY, -8 is CA
     return cur_time
 
 # def str_to_datetime_with_timezone(time_str: str) -> datetime:
@@ -31,8 +34,9 @@ class ZapperBalance(object):
     _address='0x84cA6410386cB694846f1AAEe961Db894D5ef2C4'.lower()
     _apikey='96e0cc51-a62e-42ca-acee-910ea7d2a241'
     
-    def __init__(self) -> None:
-        self.logger=self.setup_custom_logger('ZapperBalance')
+    def __init__(self, address: str) -> None:
+        # self.logger=self.setup_custom_logger('ZapperBalance')
+        self.address = address.lower()
 
         client = pygsheets.authorize(service_file = "defi-334000-410407de395b.json")
         sh = client.open('defi-database')
@@ -41,14 +45,14 @@ class ZapperBalance(object):
         self.wks = sh.worksheet_by_title('Sheet2')
         
 
-    def setup_custom_logger(self,name, log_level=logging.DEBUG):
-        formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(module)s - %(message)s')
-        handler = logging.StreamHandler()
-        handler.setFormatter(formatter)
-        logger = logging.getLogger(name)
-        logger.setLevel(log_level)
-        logger.addHandler(handler)
-        return logger
+    # def setup_custom_logger(self,name, log_level=logging.DEBUG):
+    #     formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(module)s - %(message)s')
+    #     handler = logging.StreamHandler()
+    #     handler.setFormatter(formatter)
+    #     logger = logging.getLogger(name)
+    #     logger.setLevel(log_level)
+    #     logger.addHandler(handler)
+    #     return logger
 
     def get_row(self):
         while True:
@@ -145,15 +149,18 @@ class ZapperBalance(object):
         #     col = chr(ord('A')+i)
         #     self.wks.update_value(addr=col+str(row), val=data[i])
 
-    def process(self, network):
+    def process(self, network: str = 'ethereum'):
         time = get_cur_time().strftime("%Y-%m-%d %H:%M")
         convex_data, convex_total = self.get_data(network, self._convexUrl)
         curve_data, curve_total = self.get_data(network, self._curveUrl)
         wallet_data, wallet_total = self.get_wallet_tokens()
+
+        datas = []
         
         for wallet in wallet_data:
-            row_data = [time, network, 'N/A', 'wallet', wallet['symbol'], round(wallet['price'], 5), round(wallet['balance'],5), round(wallet['balanceUSD'],5)]
-            self.wks.append_table(values=row_data)
+            row_data = [self.address, time, network, 'N/A', 'wallet', wallet['symbol'], round(wallet['price'], 5), round(wallet['balance'],5), round(wallet['balanceUSD'],5), ""]
+            # self.wks.append_table(values=row_data)
+            datas.append(row_data)
 
         for protocol_datas in [convex_data, curve_data]:
             for protocol_data in protocol_datas:
@@ -164,12 +171,16 @@ class ZapperBalance(object):
                     cur_item = protocol_data['token'][0]
                 elif protocol_data['type'] == 'farm':
                     cur_item = protocol_data['token'][0]
-                row_data = [time, network, protocol_data['appName'], protocol_data['type'], cur_item['symbol'], round(cur_item['price'], 5), round(cur_item['balance'],5), round(cur_item['balanceUSD'],5)]
-                self.wks.append_table(values=row_data)
+                row_data = [self.address, time, network, protocol_data['appName'], protocol_data['type'], cur_item['symbol'], round(cur_item['price'], 5), round(cur_item['balance'],5), round(cur_item['balanceUSD'],5), ""]
+                # self.wks.append_table(values=row_data)
+                datas.append(row_data)
                 if protocol_data['type'] == 'farm':
                     for claimable in protocol_data['token'][1:]:
-                        row_data = [time, network, protocol_data['appName'], 'claimable', claimable['symbol'], round(claimable['price'], 5), round(claimable['balance'],5), round(claimable['balanceUSD'],5), cur_item['symbol']]
-                        self.wks.append_table(values=row_data)
+                        row_data = [self.address, time, network, protocol_data['appName'], 'claimable', claimable['symbol'], round(claimable['price'], 5), round(claimable['balance'],5), round(claimable['balanceUSD'],5), cur_item['symbol']]
+                        # self.wks.append_table(values=row_data)
+                        datas.append(row_data)
+        return datas
+
 
     def cron_trigger(self, crontab: str):  # e.g. crontab "*/10 * * * *" is triger every 10- minites
         last_trigger = get_cur_time()
@@ -191,7 +202,7 @@ class ZapperBalance(object):
 
 
 if __name__ == '__main__':    
-    zb=ZapperBalance()
+    zb=ZapperBalance(address='0x84cA6410386cB694846f1AAEe961Db894D5ef2C4')
     zb.process(network='ethereum')
     pp.pprint(zb.get_wallet_tokens())
     zb.get_convex_tokens()
