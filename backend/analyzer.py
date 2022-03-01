@@ -16,7 +16,7 @@ class Analyzer():
             "cvxibbtc/sbtcCRV-f": "BTC",
             "USDC": "USDT",
             "cvxCRV": "CRV",
-            "CRV": "CRV"
+            "CRV": "CRV",
         }
         self.pool2types = defaultdict(list)
         for key, val in self.type2pool.items():
@@ -27,27 +27,28 @@ class Analyzer():
         dates = sorted(list(set(list(self.daily_df.Time))))
         result_df = pd.DataFrame()
         for date in dates:
-            skip = False
             cur_row = {}
             cur_df = self.daily_df[self.daily_df.Time == date]
+            cols = ['_price', '_value', '_quantity', '_token_value', '_daily_token_return_value', '_daily_return_quantity', '_daily_return_value']
             # print(cur_df)
             cur_row['Time'] = date
             cur_row["Networth"] = sum(cur_df["Value"])
             for pool in self.pool2types.keys():
+                skip = False
                 if cur_df[cur_df.Name.isin(self.pool2types[pool])].empty:
                     skip = True
-                    continue
-                cur_row[pool+'_price'] = float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'])
-                cur_row[pool+'_value'] = sum(cur_df[cur_df.Name.isin(self.pool2types[pool]) | cur_df.Source.isin(self.pool2types[pool])]['Value'])
-                cur_row[pool+'_quantity'] = cur_row[pool+'_value']/cur_row[pool+'_price']
-                cur_row[pool+'_token_value'] = sum(cur_df[cur_df.Source.isin(self.pool2types[pool])]['Value'])
+                cur_row[pool+'_price'] = 0 if skip else float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'].iloc[0])
+                cur_row[pool+'_value'] = 0 if skip else sum(cur_df[cur_df.Name.isin(self.pool2types[pool]) | cur_df.Source.isin(self.pool2types[pool])]['Value'])
+                cur_row[pool+'_quantity'] = 0 if skip else cur_row[pool+'_value']/cur_row[pool+'_price']
+                cur_row[pool+'_token_value'] = 0 if skip else sum(cur_df[cur_df.Source.isin(self.pool2types[pool])]['Value'])
                 
-                cur_row[pool+'_daily_token_return_value'] = cur_row[pool+'_token_value']-result_df[pool+'_token_value'].iloc[-1] if not result_df.empty else 0
-                cur_row[pool+'_daily_return_quantity'] = cur_row[pool+'_quantity']-result_df[pool+'_quantity'].iloc[-1] if not result_df.empty else 0
-                cur_row[pool+'_daily_return_value'] = cur_row[pool+'_daily_return_quantity']*cur_row[pool+'_price']
-                cur_row[pool+'_accumulative_return'] = cur_row[pool+'_daily_return_value']+result_df[pool+'_accumulative_return'].iloc[-1] if not result_df.empty else cur_row[pool+'_daily_return_value']
-            if skip:
-                continue
+                cur_row[pool+'_daily_token_return_value'] = 0 if skip else cur_row[pool+'_token_value']-result_df[pool+'_token_value'].iloc[-1] if not result_df.empty else 0
+                cur_row[pool+'_daily_return_quantity'] = 0 if skip else cur_row[pool+'_quantity']-result_df[pool+'_quantity'].iloc[-1] if not result_df.empty else 0
+                cur_row[pool+'_daily_return_value'] = 0 if skip else cur_row[pool+'_daily_return_quantity']*cur_row[pool+'_price']
+                cur_row[pool+'_accumulative_return'] = 0 if skip else cur_row[pool+'_daily_return_value']+result_df[pool+'_accumulative_return'].iloc[-1] if not result_df.empty else cur_row[pool+'_daily_return_value']
+                # print(cur_row)
+            # if skip:
+            #     continue
             # s  = pd.Series(cur_row,index=cur_row.keys())
             if result_df.empty:
                 result_df = pd.DataFrame(columns=cur_row.keys())            
