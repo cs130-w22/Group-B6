@@ -2,21 +2,21 @@
 
 from flask import Flask, request, render_template, url_for
 from flask_restful import Api, Resource
-#from werkzeug import secure_filename
 import pandas as pd
 import json
 import datetime
 import traceback
-import os, sys
+import os
 import numpy as np
 
-# sys.path.append('/home/bank_dev/Aita-Tech/Liushui/')
+import entry
+import analyzer
 
 app = Flask(__name__)
 api = Api(app)
 app.debug = True
 app.config['JSON_AS_ASCII'] = False
-pd.read_table()
+# pd.read_table()
 # pd.set_option('display.max_columns', None)
 
 # ========================================================
@@ -55,7 +55,6 @@ def get_lost_keys(args, keys):
 def return_df(df):
     rs = json.loads(df.fillna('').to_json(orient='records'))
     return rs
-
 
 # ========================================================
 # api 函数样例
@@ -114,84 +113,70 @@ def api1(args):
            }
     return res
 
-def add_tracker(args):
+def zapper(args):
+    # 检查必要入参
     keys = [
-        'user_mail', 'raise_line', 'change_interval', 'crypto'
+        'address',
     ]
     lost_keys = get_lost_keys(args, keys)
     if lost_keys:
         return {'respCode': '9999',
-                'respMsg': '缺少参数: %s' % ' '.join(lost_keys)}
+                'respMsg': 'require parameters: %s' % ' '.join(lost_keys)}
 
     # 检查数据类型
     try:
-        user_mail = args['user_mail']  # str
-        raise_line = float(args['raise_line'])  # float
-        change_interval = float(args['change_interval'])  # float
-        crypto = args['crypto']
-        # arg4 = json.loads(args['arg4'])  # 反序列前端传递的 list, dict 等序列化字符
+        arg1 = args['address']  # str
+
     except Exception as e:
         return {'respCode': '9999',
-                'respMsg': '数据类型错误: %s' % str(e),
-                'sample_args': {'arg1': '文本',
-                                'arg2': '1',
-                                'arg3': '0.99',
-                                'arg4': '["2020-01","2020-02"]'
+                'respMsg': 'datatype error: %s' % str(e),
+                'sample_args': {'address': '0x677980de609CD9CDe323f9465d6e0dDb0E425b78',
                                 }  # 后端传递入参都是字符, 需要检查数据类型
                 }
 
-    status = bt.set_mg(user_mail, raise_line, change_interval, crypto)
-    mail.thanks_email(crypto, raise_line, change_interval, [user_mail])
-
+    df = entry.get_zapper(arg1)
+    print(df)
+    data = return_df(df)
     res = {
-        'respCode': '0000', 'respMsg': 'success', 'data': {
-            'status': status,
-            'args': args
+        'success': True, 'data': data
         }
-    }
     return res
 
-def remove_tracker(args):
+
+def analyze(args):
+    # 检查必要入参
     keys = [
-        'user_mail', 'crypto'
+        'address',
     ]
     lost_keys = get_lost_keys(args, keys)
     if lost_keys:
         return {'respCode': '9999',
-                'respMsg': '缺少参数: %s' % ' '.join(lost_keys)}
+                'respMsg': 'require parameters: %s' % ' '.join(lost_keys)}
 
     # 检查数据类型
     try:
-        user_mail = args['user_mail']  # str
-        crypto = args['crypto']
-        # arg4 = json.loads(args['arg4'])  # 反序列前端传递的 list, dict 等序列化字符
+        arg1 = args['address']  # str
+
     except Exception as e:
         return {'respCode': '9999',
-                'respMsg': '数据类型错误: %s' % str(e),
-                'sample_args': {'arg1': '文本',
-                                'arg2': '1',
-                                'arg3': '0.99',
-                                'arg4': '["2020-01","2020-02"]'
+                'respMsg': 'datatype error: %s' % str(e),
+                'sample_args': {'address': '0x677980de609CD9CDe323f9465d6e0dDb0E425b78',
                                 }  # 后端传递入参都是字符, 需要检查数据类型
                 }
 
-    status = bt.remove_mg(user_mail, crypto)
-    mail.cancel_email(crypto, [user_mail])
-
+    df = analyzer.get_data(arg1)
+    print(df)
+    data = return_df(df)
     res = {
-        'respCode': '0000', 'respMsg': 'success', 'data': {
-            'status': status,
-            'args': args
+        'success': True, 'data': data
         }
-    }
     return res
-
 
 # 接口字典, api名称:api函数, 新增接口地址更新此字典
 dic_api = {
     'api1': api1,
-    'add_tracker': add_tracker,
-    'remove_tracker': remove_tracker,
+    'zapper': zapper,
+    'analyze': analyze,
 }
 
 
@@ -223,7 +208,7 @@ class Service_name(Resource):
         return json.dumps(res, ensure_ascii=False)
 
 
-api.add_resource(Service_name, '/bitcoin/<string:api_name>')  # sample 替换为service_name
+api.add_resource(Service_name, '/<string:api_name>')  # sample 替换为service_name
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5101)

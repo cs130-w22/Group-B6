@@ -1,0 +1,307 @@
+
+2022-02-28 17:37:55.604 zapper {"address": "\"0x677980de609CD9CDe323f9465d6e0dDb0E425b78\""}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+sqlite3.OperationalError: near "0x677980de609CD9CDe323f9465d6e0dDb0E425b78": syntax error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 169, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 136, in zapper
+    df = entry.get_zapper(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/entry.py", line 59, in get_zapper
+    df = pd.read_sql_query(f'SELECT * from zapper WHERE address="{address}"', con)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 436, in read_sql_query
+    return pandas_sql.read_query(
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2116, in read_query
+    cursor = self.execute(*args)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT * from zapper WHERE address=""0x677980de609CD9CDe323f9465d6e0dDb0E425b78""': near "0x677980de609CD9CDe323f9465d6e0dDb0E425b78": syntax error
+
+2022-02-28 17:38:57.797 zapper {"address": "0x677980de609CD9CDe323f9465d6e0dDb0E425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+sqlite3.OperationalError: unrecognized token: """
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 169, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 136, in zapper
+    df = entry.get_zapper(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/entry.py", line 59, in get_zapper
+    df = pd.read_sql_query(f'SELECT * from zapper"', con)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 436, in read_sql_query
+    return pandas_sql.read_query(
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2116, in read_query
+    cursor = self.execute(*args)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT * from zapper"': unrecognized token: """
+
+2022-02-28 17:39:30.558 zapper {"address": "0x677980de609CD9CDe323f9465d6e0dDb0E425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+sqlite3.OperationalError: unrecognized token: """
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 169, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 136, in zapper
+    df = entry.get_zapper(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/entry.py", line 59, in get_zapper
+    df = pd.read_sql_query(f'SELECT * from zapper"', con)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 436, in read_sql_query
+    return pandas_sql.read_query(
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2116, in read_query
+    cursor = self.execute(*args)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT * from zapper"': unrecognized token: """
+
+2022-02-28 17:39:55.672 zapper {"address": "0x677980de609CD9CDe323f9465d6e0dDb0E425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+sqlite3.OperationalError: unrecognized token: """
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 170, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 136, in zapper
+    df = entry.get_zapper(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/entry.py", line 59, in get_zapper
+    df = pd.read_sql_query(f'SELECT * from zapper"', con)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 436, in read_sql_query
+    return pandas_sql.read_query(
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2116, in read_query
+    cursor = self.execute(*args)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT * from zapper"': unrecognized token: """
+
+2022-02-28 17:40:15.498 zapper {"address": "0x677980de609CD9CDe323f9465d6e0dDb0E425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+sqlite3.OperationalError: unrecognized token: """
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 170, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 136, in zapper
+    df = entry.get_zapper(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/entry.py", line 59, in get_zapper
+    df = pd.read_sql_query(f'SELECT * from zapper"', con)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 436, in read_sql_query
+    return pandas_sql.read_query(
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2116, in read_query
+    cursor = self.execute(*args)
+  File "/usr/local/lib/python3.9/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT * from zapper"': unrecognized token: """
+
+2022-02-28 18:09:21.955 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3361, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 76, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 108, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5198, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5206, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Value($)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 31, in process_data
+    cur_row["Networth"] = sum(cur_df["Value($)"])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3458, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Value($)'
+
+2022-02-28 18:09:27.620 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3361, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 76, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 108, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5198, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5206, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Value($)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 31, in process_data
+    cur_row["Networth"] = sum(cur_df["Value($)"])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3458, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Value($)'
+
+2022-02-28 18:10:23.113 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3361, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 76, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 108, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5198, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5206, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Value($)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 31, in process_data
+    cur_row["Networth"] = sum(cur_df["Value($)"])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3458, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Value($)'
+
+2022-02-28 18:10:32.057 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3361, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 76, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 108, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5198, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5206, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Value($)'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 31, in process_data
+    cur_row["Networth"] = sum(cur_df["Value"])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3458, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Value($)'
+
+2022-02-28 18:10:50.222 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 33, in process_data
+    cur_row[pool+'_price'] = float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/series.py", line 185, in wrapper
+    raise TypeError(f"cannot convert the series to {converter}")
+TypeError: cannot convert the series to <class 'float'>
+
+2022-02-28 18:12:10.529 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 63, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 33, in process_data
+    cur_row[pool+'_price'] = float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/series.py", line 185, in wrapper
+    raise TypeError(f"cannot convert the series to {converter}")
+TypeError: cannot convert the series to <class 'float'>
+
+2022-02-28 18:13:58.248 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 64, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 33, in process_data
+    cur_row[pool+'_price'] = float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/series.py", line 185, in wrapper
+    raise TypeError(f"cannot convert the series to {converter}")
+TypeError: cannot convert the series to <class 'float'>
+
+2022-02-28 18:14:11.477 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 64, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 34, in process_data
+    cur_row[pool+'_price'] = float(cur_df[cur_df.Name.isin(self.pool2types[pool])]['Price'])
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/series.py", line 185, in wrapper
+    raise TypeError(f"cannot convert the series to {converter}")
+TypeError: cannot convert the series to <class 'float'>
+
+2022-02-28 18:15:37.061 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 65, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 33, in process_data
+    if not cur_df[cur_df.Name.isin(self.pool2types[pool])]:
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/generic.py", line 1537, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+2022-02-28 18:16:55.303 analyze {"address": "0x677980de609cd9cde323f9465d6e0ddb0e425b78"}
+Traceback (most recent call last):
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 202, in post
+    res = dic_api[api_name](args)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/flask_api.py", line 167, in analyze
+    df = analyzer.get_data(arg1)
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 68, in get_data
+    data = analyzer.process_data()
+  File "/Users/vincentl/PycharmProjects/Class/CS130/Group-B6/backend/analyzer.py", line 34, in process_data
+    if not cur_df[cur_df.Name.isin(self.pool2types[pool])]:
+  File "/usr/local/lib/python3.9/site-packages/pandas/core/generic.py", line 1537, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().

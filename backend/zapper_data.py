@@ -31,7 +31,7 @@ class ZapperBalance(object):
     _farmUrl='farms/balances'
     # _address='0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4'
     # TODO 1. change address
-    _address='0x84cA6410386cB694846f1AAEe961Db894D5ef2C4'.lower()
+    # _address='0x84cA6410386cB694846f1AAEe961Db894D5ef2C4'.lower()
     _apikey='96e0cc51-a62e-42ca-acee-910ea7d2a241'
     
     def __init__(self, address: str) -> None:
@@ -91,14 +91,14 @@ class ZapperBalance(object):
 
     def get_wallet_tokens(self):
         params={
-            "addresses%5B%5D":self._address,
+            "addresses%5B%5D":self.address,
             'network':'ethereum',
             "api_key":self._apikey
         }
         result=self._http_get_request(params,self._baseUrl+self._walletUrl)
         # pp.pprint(result)
-        assets=result[self._address]['products'][0]['assets']
-        meta=result[self._address]['meta']
+        assets=result[self.address]['products'][0]['assets']
+        meta=result[self.address]['meta']
         total_value=next(filter(lambda x:x['label']=='Total',iter(meta)))['value']
         l=[]
         for i in assets:
@@ -111,18 +111,18 @@ class ZapperBalance(object):
 
     def get_data(self, network: str, protocol_url: str):
         params={
-            "addresses%5B%5D":self._address,
+            "addresses%5B%5D":self.address,
             'network':network,
             "api_key":self._apikey
         }
         result=self._http_get_request(params,self._baseUrl + protocol_url)
-        products=result[self._address]['products']
+        products=result[self.address]['products']
         
         items = []
         for product in products:
             items += self.recursion_get_convex_items(product['assets'], [])
 
-        meta=result[self._address]['meta']
+        meta=result[self.address]['meta']
         total_value=next(filter(lambda x:x['label']=='Total',iter(meta)))['value']
         
         return items, total_value
@@ -149,8 +149,9 @@ class ZapperBalance(object):
         #     col = chr(ord('A')+i)
         #     self.wks.update_value(addr=col+str(row), val=data[i])
 
-    def process(self, network: str = 'ethereum'):
-        time = get_cur_time().strftime("%Y-%m-%d %H:%M")
+    def process(self, time: datetime = get_cur_time(), network: str = 'ethereum'):
+        # time = get_cur_time().strftime("%Y-%m-%d %H:%M")
+        time = time.strftime("%Y-%m-%d %H:%M")
         convex_data, convex_total = self.get_data(network, self._convexUrl)
         curve_data, curve_total = self.get_data(network, self._curveUrl)
         wallet_data, wallet_total = self.get_wallet_tokens()
