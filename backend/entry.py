@@ -1,6 +1,8 @@
 import time
 from datetime import datetime, timedelta, timezone
 import logging
+import sqlite3
+import pandas as pd
 
 from croniter import croniter
 
@@ -47,6 +49,11 @@ def cron_trigger(crontab: str):  # e.g. crontab "*/10 * * * *" is triger every 1
                 logging.info(f'Waiting for the next trigger: {next_time.strftime("%Y-%m-%d %H:%M")}')
                 waiting = True
             time.sleep(60)
+
+def analysis_entry():
+    con = sqlite3.connect("zapper.sqlite")
+    df = pd.read_sql_query("SELECT * from zapper", con)
+    print(df)
 
 if __name__=='__main__':
     # entry()

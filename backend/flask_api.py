@@ -11,8 +11,6 @@ import os, sys
 import numpy as np
 
 # sys.path.append('/home/bank_dev/Aita-Tech/Liushui/')
-import bitcoin as bt
-import mail
 
 app = Flask(__name__)
 api = Api(app)
