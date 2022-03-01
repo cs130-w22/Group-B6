@@ -46,8 +46,11 @@ def getaddresslist():
     data = []
     for row in address:
         data.append([x for x in row])
+    res = []
+    for d in data:
+        res+=d
 
-    return data
+    return res
 
 
 @bp.route("/address_list", methods=("GET","POST"))
