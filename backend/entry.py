@@ -50,4 +50,4 @@ def cron_trigger(crontab: str):  # e.g. crontab "*/10 * * * *" is triger every 1
 
 if __name__=='__main__':
     # entry()
-    cron_trigger(crontab="*/5 * * * *")
+    cron_trigger(crontab="0 */2 * * *")
