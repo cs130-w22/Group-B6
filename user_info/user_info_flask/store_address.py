@@ -37,6 +37,18 @@ def index():
 
     return jsonify(address=data)
 
+def getaddresslist():
+    db=get_db()
+    address = db.execute(
+        "SELECT DISTINCT address"
+        " FROM address"
+    ).fetchall()
+    data = []
+    for row in address:
+        data.append([x for x in row])
+
+    return data
+
 
 @bp.route("/address_list", methods=("GET","POST"))
 def addresslist():
