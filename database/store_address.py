@@ -24,7 +24,7 @@ def index():
     db = get_db()
     address = db.execute(
         "SELECT u.id, p.address"
-        " FROM address p JOIN user u ON p.id = u.id"
+        " FROM address p JOIN user u ON p.user_id = u.id"
         " ORDER BY created DESC"
     ).fetchall()
     return address
@@ -35,7 +35,7 @@ def addresslist():
     db = get_db()
     address = db.execute(
         "SELECT DISTINCT u.address"
-        " FROM address p JOIN user u ON p.id = u.id"
+        " FROM address p JOIN user u ON p.user_id = u.id"
         " ORDER BY created DESC"
     ).fetchall()
     return address
