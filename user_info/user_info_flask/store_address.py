@@ -77,7 +77,7 @@ def create():
             except db.IntegrityError:
                 # The username was already taken, which caused the
                 # commit to fail. Show a validation error.
-                meesage = "Insert failed."
+                message = "Insert failed."
             else:
                 # Success, go to the login page.
                 #return redirect(url_for("auth.login"))

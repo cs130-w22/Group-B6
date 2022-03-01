@@ -15,5 +15,5 @@ CREATE TABLE address (
   user_id INTEGER NOT NULL,
   address TEXT NOT NULL,
   FOREIGN KEY(user_id) REFERENCES user(id),
-  PRIMARY KEY(user_id, address)
+  UNIQUE (user_id, address)
 );
