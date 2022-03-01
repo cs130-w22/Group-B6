@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {Box, Button, Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import {track} from "./function";
+import {query, track} from "./function";
 import Dialogue from "../component/dialogue";
 import {useState} from "react";
 import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
@@ -45,7 +45,8 @@ function Search({selectedAddress, token}) {
         const data = {
             address: selectedAddress
         }
-        const result = await track(data);
+        const result = await query(data);
+        console.log(result)
         result === null ? setContent("address information ready") : setContent("internal server error")
         setOpen(true)
     }
