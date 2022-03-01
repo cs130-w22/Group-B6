@@ -33,8 +33,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # apply the blueprints to the app
-    from user_info_flask import auth
+    from user_info_flask import auth, store_address
 
     app.register_blueprint(auth.bp)
+    app.register_blueprint(store_address.bp)
 
     return app

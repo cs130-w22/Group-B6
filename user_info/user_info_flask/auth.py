@@ -110,6 +110,8 @@ def login():
             success = True
             message = "You are logged in."
 
+    else:
+        message = "Please log in."
     # session cookie is automatically returned 
     return jsonify(success=success, message=message)
 
