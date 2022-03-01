@@ -63,5 +63,5 @@ def get_zapper(address):
 
 if __name__=='__main__':
     # entry()
-    # cron_trigger(crontab="0 */2 * * *")
-    cron_trigger(crontab="*/5 * * * *")
+    cron_trigger(crontab="0 */2 * * *")
+    # cron_trigger(crontab="*/5 * * * *")
