@@ -19,9 +19,9 @@ export async function track(data) {
 export async function query(data) {
     return await axios({
         method: "post",
-        url: "http://44.203.39.37:5101/zapper",
+        url: "http://localhost:5101/zapper",
         data: data,
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "multipart/form-data" },
     }).then(function (response) {
         //handle success
         return response.data.success === true ? response.data.data : null;

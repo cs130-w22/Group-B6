@@ -85,7 +85,7 @@ function Header({visitor, search, setSelectedAddress, setToken}) {
         } else {
             setSelectedAddress(address);
         }
-        setSelectedAddress('0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4');
+        setSelectedAddress(address);
     }
 
     return (

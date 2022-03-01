@@ -8,14 +8,16 @@ import {useState} from "react";
 import ScreenSearchDesktopIcon from '@mui/icons-material/ScreenSearchDesktop';
 
 const columns = [
-    { field: 'time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'network', headerName: 'Network', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'protocol', headerName: 'Protocol', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'category', headerName: 'Category',  sortable: true, width: 90, align: 'center', headerAlign: 'center'},
-    { field: 'name', headerName: 'Name', width: 160, align: 'center', headerAlign: 'center'},
-    { field: 'price', headerName: 'Price', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'quantity', headerName: 'Quantity', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'value', headerName: 'Value', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Address', headerName: 'Address', sortable: true, width: 300, align: 'center', headerAlign: 'center'},
+    { field: 'Time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Network', headerName: 'Network', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Protocol', headerName: 'Protocol', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Category', headerName: 'Category',  sortable: true, width: 90, align: 'center', headerAlign: 'center'},
+    { field: 'Name', headerName: 'Name', width: 160, align: 'center', headerAlign: 'center'},
+    { field: 'Price', headerName: 'Price', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Quantity', headerName: 'Quantity', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Value', headerName: 'Value', sortable: true, type: 'number', width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Source', headerName: 'Source', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
 ];
 
 const rows = [
@@ -35,6 +37,7 @@ const rows = [
 function Search({selectedAddress, token}) {
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState('');
+    const [data, setData] = useState([]);
 
     async function handleSearch(selectedAddress) {
         if (selectedAddress === '') {
@@ -42,12 +45,18 @@ function Search({selectedAddress, token}) {
             setOpen(true)
             return
         }
-        const data = {
-            address: selectedAddress
-        }
+
+        var data = new FormData();
+        data.append("address", selectedAddress);
         const result = await query(data);
-        console.log(result)
-        result === null ? setContent("address information ready") : setContent("internal server error")
+
+        if (result !== null) {
+            setContent("address information ready")
+            const indexed = result.map((item, index) => Object.assign(item, { id : index }))
+            setData(indexed)
+        } else {
+            setContent("internal server error")
+        }
         setOpen(true)
     }
 
@@ -111,7 +120,7 @@ function Search({selectedAddress, token}) {
                 >TRACK ADDRESS</Button>
             </Box>
             <DataGrid
-                rows={rows}
+                rows={data}
                 columns={columns}
                 pageSize={10}
                 rowsPerPageOptions={[10]}
