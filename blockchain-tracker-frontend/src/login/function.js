@@ -1,13 +1,13 @@
 import axios from "axios";
 
-//TODO: modify this to match with the actual login api in the server
+axios.defaults.withCredentials = true
+
 export async function login(credential) {
     return await axios({
         method: "post",
         url: "http://localhost:5000/auth/login",
         data: credential,
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true
+        headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {
             //handle success
             return response.data.success === true;

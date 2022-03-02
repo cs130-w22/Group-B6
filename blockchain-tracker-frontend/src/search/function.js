@@ -4,9 +4,9 @@ import axios from "axios";
 export async function track(data) {
     return await axios({
         method: "post",
-        url: "http://0.0.0.0:5000/create_track",
+        url: "http://localhost:5000/create_track",
         data: data,
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {
         //handle success
         return response.data.success === true;
