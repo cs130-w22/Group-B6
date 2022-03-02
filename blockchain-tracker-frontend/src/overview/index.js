@@ -42,9 +42,7 @@ function Overview({setSelectedAddress, selectedAddress, token}) {
             setOpen(true)
             return
         }
-
-        const result = await trackedAddresses(data);
-        setAddresses(result);
+        setAddresses(await trackedAddresses());
     }
 
     return <Grid item xs={12} md={6}>
