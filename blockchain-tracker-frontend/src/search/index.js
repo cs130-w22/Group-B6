@@ -74,12 +74,11 @@ function Search({selectedAddress, token}) {
         }
 
         const data = {
-            token: token,
             address: selectedAddress
         }
 
         const result = await track(data);
-        result === null ? setContent("start tracking") : setContent("you already tracked this address")
+        result ? setContent("start tracking") : setContent("you already tracked this address")
         setOpen(true)
     }
 
