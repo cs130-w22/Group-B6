@@ -20,7 +20,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import DialogContentText from "@mui/material/DialogContentText";
-import {validate} from "./function";
+import {logout, validate} from "./function";
 import Dialogue from "../component/dialogue";
 
 const useStyles = makeStyles({
@@ -42,7 +42,8 @@ function LogoutDialogue({open, setOpen, setToken}) {
         setOpen(false);
     };
 
-    const handleLogoutClick = () => {
+    async function handleLogoutClick(){
+        await logout();
         setOpen(false);
         setToken('');
     }

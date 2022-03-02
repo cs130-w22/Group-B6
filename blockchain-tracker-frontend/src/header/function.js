@@ -14,3 +14,18 @@ export async function validate(data) {
         return null;
     });
 }
+
+export async function logout() {
+    return await axios({
+        method: "get",
+        url: "http://0.0.0.0:5000/auth/logout",
+        data: null,
+        headers: {'Access-Control-Allow-Origin' : '*'}
+    }).then(function (response) {
+        //handle success
+        return response.data.success === true;
+    }).catch(function (response) {
+        //handle error
+        return false;
+    });
+}
