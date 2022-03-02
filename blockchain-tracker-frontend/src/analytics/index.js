@@ -8,8 +8,8 @@ import {analytics} from "./function";
 import {DataGrid} from "@mui/x-data-grid";
 
 const columns = [
-    { field: 'time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
-    { field: 'net_worth', headerName: 'Networth',  type: 'number', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Time', headerName: 'Time', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
+    { field: 'Networth', headerName: 'Networth',  type: 'number', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
     { field: 'GBP_price', headerName: 'GBP_price',  type: 'number', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
     { field: 'GBP_value', headerName: 'GBP_value',   type: 'number', sortable: true, width: 130, align: 'center', headerAlign: 'center'},
     { field: 'GBP_quantity', headerName: 'GBP_quantity',  type: 'number', width: 160, align: 'center', headerAlign: 'center'},
@@ -36,59 +36,12 @@ const columns = [
     { field: 'BTC_accumulative_return', headerName: 'BTC_accumulative_return', sortable: true, type: 'number', width: 200, align: 'center', headerAlign: 'center'},
 ];
 
-const rows = [
-    { id: 1, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 2, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 3, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 4, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 5, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 6, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 7, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 8, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-    { id: 9, time: '2021-12-03 20:00', net_worth: 123.12,
-        GBP_price: 123.12, GBP_value: 123.12, GBP_quantity: 123.12, GBP_token_value: 123.12, GBP_daily_token_return_value: 123.12, GBP_daily_return_quantity: 123.12, GBP_daily_return_value : 123.12, GBP_accumulative_return: 123.12,
-        USDT_price: 123.12, USDT_value: 123.12, USDT_quantity: 123.12, USDT_token_value: 123.12, USDT_daily_token_return_value: 123.12, USDT_daily_return_quantity: 123.12, USDT_daily_return_value : 123.12, USDT_accumulative_return: 123.12,
-        BTC_price: 123.12, BTC_value: 123.12, BTC_quantity: 123.12, BTC_token_value: 123.12, BTC_daily_token_return_value: 123.12, BTC_daily_return_quantity: 123.12, BTC_daily_return_value : 123.12, BTC_accumulative_return: 123.12,
-    },
-];
-
 function Analytics({selectedAddress, token}) {
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState('');
+    const [data, setData] = useState([]);
 
-    async function handleClick(selectedAddress) {
+    async function handleClick() {
         if (token === '') {
             setContent("login first to generate report")
             setOpen(true)
@@ -102,13 +55,17 @@ function Analytics({selectedAddress, token}) {
             return
         }
 
-        const data = {
-            token: token,
-            address: selectedAddress
-        }
-
+        var data = new FormData();
+        data.append("address", selectedAddress);
         const result = await analytics(data);
-        result === null ? setContent("analytics data generated") : setContent("internal system error")
+
+        if (result !== null) {
+            setContent("analytics data generated");
+            const indexed = result.map((item, index) => Object.assign(item, { id : index }))
+            setData(indexed)
+        } else {
+            setContent("internal system error")
+        }
         setOpen(true)
     }
 
@@ -121,7 +78,7 @@ function Analytics({selectedAddress, token}) {
             </Button>
         </Box>
         <DataGrid
-            rows={rows}
+            rows={data}
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}

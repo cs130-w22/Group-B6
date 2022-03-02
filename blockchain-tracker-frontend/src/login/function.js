@@ -4,14 +4,15 @@ import axios from "axios";
 export async function login(credential) {
     return await axios({
         method: "post",
-        url: "/api/account/login",
+        url: "http://localhost:5000/auth/login",
         data: credential,
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true
     }).then(function (response) {
             //handle success
-            return response.data.success === true ? response.data.data : null;
+            return response.data.success === true;
         }).catch(function (response) {
             //handle error
-            return null;
+            return false;
         });
 }
