@@ -2,4 +2,5 @@
 
 ## Backend
 
-[FLASK_API](flask_api.html)
+[FLASK_API](https://cs130-w22.github.io/Group-B6/flask_api)
+
