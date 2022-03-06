@@ -205,8 +205,8 @@ class Service_name(Resource):
                 save_errlog('%s %s %s' % (timestamp(), api_name, json.dumps(args)), 'sample')  # 错误日志
         else:
             res = {'respCode': '9999', 'respMsg': 'wrong api address'}
-        return json.dumps(res, ensure_ascii=False)
-
+        #return json.dumps(res, ensure_ascii=False)
+        return res
 
 api.add_resource(Service_name, '/<string:api_name>')  # sample 替换为service_name
 

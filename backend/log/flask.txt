@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "flask_api.py", line 4, in <module>
+    from flask_restful import Api, Resource
+ModuleNotFoundError: No module named 'flask_restful'
+Traceback (most recent call last):
+  File "flask_api.py", line 4, in <module>
+    from flask_restful import Api, Resource
+ModuleNotFoundError: No module named 'flask_restful'
