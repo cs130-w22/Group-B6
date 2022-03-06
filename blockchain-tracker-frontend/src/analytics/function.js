@@ -4,7 +4,7 @@ import axios from "axios";
 export async function analytics(data) {
     return await axios({
         method: "post",
-        url: "http://localhost:5101/analyze",
+        url: "http://52.40.170.79:5101/analyze",
         data: data,
         headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "multipart/form-data" },
     }).then(function (response) {

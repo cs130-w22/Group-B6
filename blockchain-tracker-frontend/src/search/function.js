@@ -4,7 +4,7 @@ import axios from "axios";
 export async function track(data) {
     return await axios({
         method: "post",
-        url: "http://localhost:5000/create_track",
+        url: "http://52.40.170.79:5000/create_track",
         data: data,
         headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {
@@ -19,7 +19,7 @@ export async function track(data) {
 export async function query(data) {
     return await axios({
         method: "post",
-        url: "http://localhost:5101/zapper",
+        url: "http://52.40.170.79:5101/zapper",
         data: data,
         headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "multipart/form-data" },
     }).then(function (response) {
