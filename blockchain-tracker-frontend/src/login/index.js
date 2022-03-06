@@ -18,14 +18,13 @@ function Login({token, setToken}) {
 
     async function handleClick() {
         const credentials = {
-            email: "test@gmail.com",
-            password: "test"
+            username: email,
+            password: password
         }
         const result = await login(credentials);
-        //TODO: change this to address token from the server
-        if (result === null) {
+        if (result) {
             setOpen(true);
-            setToken('some_token_from_result');
+            setToken("token")
         }
     }
 

@@ -1,16 +1,16 @@
 import axios from "axios";
 
-export async function trackedAddresses(data) {
+export async function trackedAddresses() {
     return await axios({
-        method: "post",
-        url: "/api/user/trackedAddresses",
-        data: data,
-        headers: { "Content-Type": "multipart/form-data" },
+        method: "get",
+        url: "http://localhost:5000/address_list",
+        data: null,
+        headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {
         //handle success
-        return response.data.success === true ? response.data.data : null;
+        return response.data.success === true ? response.data.address : [];
     }).catch(function (response) {
         //handle error
-        return null;
+        return [];
     });
 }

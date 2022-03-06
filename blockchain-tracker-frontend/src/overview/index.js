@@ -26,9 +26,8 @@ function Overview({setSelectedAddress, selectedAddress, token}) {
     useEffect(() => {
         // declare the data fetching function
         const fetchData = async () => {
-            const data = { token: token}
-            const result = await trackedAddresses(data);
-            setAddresses(['1x123', '1x124', '1x125'])
+            const result = await trackedAddresses();
+            setAddresses(result)
         }
 
         if (token !== '') {
@@ -43,14 +42,7 @@ function Overview({setSelectedAddress, selectedAddress, token}) {
             setOpen(true)
             return
         }
-
-        const data = {
-            token: token
-        }
-
-        //TODO: store actual addresses
-        const result = await trackedAddresses(data);
-        setAddresses(addresses.concat(['1x123']));
+        setAddresses(await trackedAddresses());
     }
 
     return <Grid item xs={12} md={6}>

@@ -1,12 +1,12 @@
 //TODO: modify this to match with the actual login api in the server
 import axios from "axios";
 
-export async function analytics(credential) {
+export async function analytics(data) {
     return await axios({
         method: "post",
-        url: "/api/account/analytics",
-        data: credential,
-        headers: { "Content-Type": "multipart/form-data" },
+        url: "http://localhost:5101/analyze",
+        data: data,
+        headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "multipart/form-data" },
     }).then(function (response) {
         //handle success
         return response.data.success === true ? response.data.data : null;

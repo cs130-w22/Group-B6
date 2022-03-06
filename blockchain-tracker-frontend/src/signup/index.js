@@ -19,12 +19,12 @@ function Signup() {
 
     async function handleClick() {
         const credentials = {
-            email: "test@gmail.com",
-            password: "test"
+            username: email,
+            password: password
         }
         const result = await signup(credentials);
-        //TODO: modify this to match with actual signup response
-        if (result === null) {
+
+        if (result) {
             setOpen(true)
             setEmail('')
             setPassword('')
