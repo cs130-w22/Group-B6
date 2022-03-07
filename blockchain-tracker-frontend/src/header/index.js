@@ -77,15 +77,17 @@ function Header({visitor, search, setSelectedAddress, setToken}) {
 
     async function handleClick() {
         //TODO: check if address is valid against db
-        const data = {
-            address : address
-        }
-        const result = await validate(data)
-        if (result === null) {
-            setOpen2(true)
-        } else {
-            setSelectedAddress(address);
-        }
+        /**
+         *   const data = {
+         *             address : address
+         *         }
+         *         const result = await validate(data)
+         *         if (result === null) {
+         *             setOpen2(true)
+         *         } else {
+         *             setSelectedAddress(address);
+         *         }
+         */
         setSelectedAddress(address);
     }
 

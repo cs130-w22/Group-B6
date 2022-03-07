@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44a70974-49cc-4b66-a540-850aa205bd0b" name="Default Changelist" comment="" />
+    <list default="true" id="44a70974-49cc-4b66-a540-850aa205bd0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-tracker-frontend/src/analytics/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-tracker-frontend/src/analytics/function.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-tracker-frontend/src/header/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-tracker-frontend/src/header/function.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-tracker-frontend/src/login/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-tracker-frontend/src/login/function.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-tracker-frontend/src/search/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-tracker-frontend/src/search/function.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain-tracker-frontend/src/signup/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain-tracker-frontend/src/signup/function.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +58,7 @@
       <workItem from="1644716528926" duration="19571000" />
       <workItem from="1644791436267" duration="3093000" />
       <workItem from="1644805298182" duration="1518000" />
+      <workItem from="1646525231287" duration="2199000" />
     </task>
     <servers />
   </component>
