@@ -1,2 +1,6 @@
 .DS_Store
 backend/test.log
+__pychache__/*
+backend/log/*
+backend/log_err/*
+backend/zapper.sqlite
