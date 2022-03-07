@@ -4,3 +4,5 @@ __pychache__/*
 backend/log/*
 backend/log_err/*
 backend/zapper.sqlite
+user_info/USER_INFO_DB
+user_info/user_info_flask/__pycache__/*

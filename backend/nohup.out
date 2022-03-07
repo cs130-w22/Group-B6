@@ -1,0 +1,125 @@
+Traceback (most recent call last):
+  File "flask_api.py", line 4, in <module>
+    from flask_restful import Api, Resource
+ModuleNotFoundError: No module named 'flask_restful'
+Traceback (most recent call last):
+  File "entry.py", line 5, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+['0x84cA6410386cB694846f1AAEe961Db894D5ef2C4', '0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4', '0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1', '0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca', '0x677980de609CD9CDe323f9465d6e0dDb0E425b78']
+table already exist. skip create.
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "CVX", "20.56", "68.65917", "1411.63247", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "ETH", "2907.33", "1.92652", "5601.03926", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "IMX", "1.45", "218.58693", "316.95105", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "LUSD", "1.005", "2071.27492", "2081.6313", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "PEOPLE", "0.06495", "14632.35519", "950.31294", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "stkAAVE", "133.93", "0.11128", "14.90333", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "USDC", "1", "65147.21453", "65147.21453", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "CRV", "2.57", "0.00392", "0.01006", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "0.00057", "0.01169", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "CRV", "2.57", "211.52925", "543.63018", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "30.72664", "631.73972", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "SPELL", "0.00463", "9997.82448", "46.27803", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "cvxCRV", "2.45289", "625.55382", "1534.4171", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CRV", "2.57", "22.02212", "56.59684", "cvxCRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "3.19892", "65.76984", "cvxCRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "3CRV", "1.02", "42.35121", "43.19823", "cvxCRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "ETH", "2907.33", "0.09019", "262.2032", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "MIM", "0.99997", "0.38336", "0.38335", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "USDC", "1", "2.18076", "2.18076", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "WETH", "2907.14", "7e-05", "0.19518", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "vault", "vlCVX", "20.56", "4933.033", "101423.15845", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "vault", "vlCVX", "20.56", "152.53417", "3136.10262", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "cvxCRV", "2.45289", "26.20562", "64.27961", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "cvxibGBP+sGBP-f", "1.3428", "89475.23369", "120147.12647", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CRV", "2.57", "47.80633", "122.86228", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "6.94433", "142.77533", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "0.93242", "19.1705", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "CRV", "2.57", "17.17044", "44.12803", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "2.49417", "51.28013", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "farm", "CRV", "2.57", "27.5621", "70.8346", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "CVX", "20.56", "4.00366", "82.3152", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Convex", "claimable", "3CRV", "1.02", "24.74304", "25.23791", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Curve", "vault", "CRV", "2.57", "42367.72105", "108885.04311", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Curve", "farm", "SNX", "3.93", "2.49259", "9.79589", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Curve", "farm", "CRV", "2.57", "0.87891", "2.2588", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-03 00:00", "ethereum", "Curve", "farm", "CRV", "2.57", "2.57066", "6.60659", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "ETH", "2907.23", "0.61814", "1797.06936", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "iFARM", "125.23334", "4.82476", "604.22059", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-03 00:00", "ethereum", "N/A", "wallet", "xSUSHI", "4.21763", "398.77907", "1681.90104", "")
+Traceback (most recent call last):
+  File "entry.py", line 66, in <module>
+    cron_trigger(crontab="0 */2 * * *")
+  File "entry.py", line 43, in cron_trigger
+    entry(next_time)
+  File "entry.py", line 32, in entry
+    batch_process(address_list, time)
+  File "entry.py", line 23, in batch_process
+    datas = zp.process(time=time)
+  File "/home/ubuntu/Group-B6/backend/zapper_data.py", line 175, in process
+    row_data = [self.address, time, network, protocol_data['appName'], protocol_data['type'], cur_item['symbol'], round(cur_item['price'], 5), round(cur_item['balance'],5), round(cur_item['balanceUSD'],5), ""]
+TypeError: 'NoneType' object is not subscriptable
+ * Serving Flask app "flask_api" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Serving Flask app "flask_api" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+['0x84cA6410386cB694846f1AAEe961Db894D5ef2C4', '0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4', '0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1', '0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca', '0x677980de609CD9CDe323f9465d6e0dDb0E425b78']
+table already exist. skip create.
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "CVX", "17.79", "68.65917", "1221.44657", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "ETH", "2675.65", "1.92652", "5154.70232", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "IMX", "1.3", "218.58693", "284.16301", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "LUSD", "1.011", "2071.27492", "2094.05894", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "PEOPLE", "0.05701", "14632.35519", "834.17594", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "stkAAVE", "125.16", "0.11128", "13.92743", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "USDC", "1.002", "65147.21453", "65277.50895", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "CRV", "2.26", "0.00392", "0.00885", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "0.00056", "0.01", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "CRV", "2.26", "211.52925", "478.05611", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "30.35862", "540.07991", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "SPELL", "0.00412", "9997.82448", "41.20353", "CRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "cvxCRV", "2.16209", "625.55382", "1352.50468", "")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CRV", "2.26", "22.69223", "51.28443", "cvxCRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "3.25678", "57.93816", "cvxCRV")
+INSERT INTO zapper VALUES ("0x84ca6410386cb694846f1aaee961db894d5ef2c4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "3CRV", "1.02", "42.77304", "43.6285", "cvxCRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "ETH", "2675.65", "0.17038", "455.87506", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "MIM", "0.99965", "0.38336", "0.38323", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "WETH", "2673.99", "7e-05", "0.17953", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "cvxCRV", "2.16209", "31.77779", "68.7065", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "cvxusdn3CRV", "1.05134", "360973.59698", "379507.0102", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CRV", "2.26", "3.86295", "8.73027", "cvxusdn3CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "0.55441", "9.86295", "cvxusdn3CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "cvxibGBP+sGBP-f", "1.32547", "89475.23369", "118596.8026", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CRV", "2.26", "67.75887", "153.13504", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "9.72474", "173.00304", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "1.3648", "24.27976", "cvxibGBP+sGBP-f")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "CRV", "2.26", "17.17044", "38.80519", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "2.4643", "43.83984", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "farm", "CRV", "2.26", "27.5621", "62.29035", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "CVX", "17.79", "3.95571", "70.372", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Convex", "claimable", "3CRV", "1.02", "24.74304", "25.23791", "CRV")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Curve", "vault", "CRV", "2.26", "42367.72105", "95751.04958", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Curve", "claimable", "3Pool Curve", "1.02248", "120.78156", "123.49682", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Curve", "farm", "SNX", "3.89", "2.49259", "9.69619", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Curve", "farm", "CRV", "2.26", "0.87891", "1.98634", "")
+INSERT INTO zapper VALUES ("0x8c6c8c306fbcea9330e9dd6c18b8659bdf2445a4", "2022-03-05 12:00", "ethereum", "Curve", "farm", "CRV", "2.26", "2.57066", "5.80969", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "ETH", "2675.65", "0.60755", "1625.60079", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "iFARM", "123.16475", "4.82476", "594.24014", "")
+INSERT INTO zapper VALUES ("0x36b6fe63945a9ba650f3b8d87dd6d51b47d554f1", "2022-03-05 12:00", "ethereum", "N/A", "wallet", "xSUSHI", "3.88171", "398.77907", "1547.94432", "")
+Traceback (most recent call last):
+  File "entry.py", line 66, in <module>
+    cron_trigger(crontab="0 */2 * * *")
+  File "entry.py", line 43, in cron_trigger
+    entry(next_time)
+  File "entry.py", line 32, in entry
+    batch_process(address_list, time)
+  File "entry.py", line 23, in batch_process
+    datas = zp.process(time=time)
+  File "/home/ubuntu/Group-B6/backend/zapper_data.py", line 175, in process
+    row_data = [self.address, time, network, protocol_data['appName'], protocol_data['type'], cur_item['symbol'], round(cur_item['price'], 5), round(cur_item['balance'],5), round(cur_item['balanceUSD'],5), ""]
+TypeError: 'NoneType' object is not subscriptable
