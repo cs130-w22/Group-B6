@@ -1,0 +1,9 @@
+language: python
+# command to install dependencies
+install:
+  - pip install --user -r requirements.txt
+  - pip install --user pygsheets croniter pandas 
+# command to run tests
+script:
+  - nohup python3 -u backend/entry.py &
+  - nohup python3 -u backend/flask_api.py &
