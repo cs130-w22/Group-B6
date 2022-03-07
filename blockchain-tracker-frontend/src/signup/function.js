@@ -4,7 +4,7 @@ import axios from "axios";
 export async function signup(credential) {
     return await axios({
         method: "post",
-        url: "http://52.40.170.79:5000/auth/register",
+        url: "https://cors-everywhere.herokuapp.com/http://52.40.170.79:5000/auth/register",
         data: credential,
         headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {

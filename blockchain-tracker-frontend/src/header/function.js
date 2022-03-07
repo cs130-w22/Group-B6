@@ -18,7 +18,7 @@ export async function validate(data) {
 export async function logout() {
     return await axios({
         method: "get",
-        url: "http://52.40.170.79:5000/auth/logout",
+        url: "https://cors-everywhere.herokuapp.com/http://52.40.170.79:5000/auth/logout",
         data: null,
         headers: {'Access-Control-Allow-Origin' : '*'}
     }).then(function (response) {

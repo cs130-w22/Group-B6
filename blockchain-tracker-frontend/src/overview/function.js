@@ -3,7 +3,7 @@ import axios from "axios";
 export async function trackedAddresses() {
     return await axios({
         method: "get",
-        url: "http://localhost:5000/address_list",
+        url: "https://cors-everywhere.herokuapp.com/http://localhost:5000/address_list",
         data: null,
         headers: { 'Access-Control-Allow-Origin' : '*', "Content-Type": "application/json" },
     }).then(function (response) {
