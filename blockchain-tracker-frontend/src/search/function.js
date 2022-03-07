@@ -19,7 +19,7 @@ export async function track(data) {
 export async function query(data) {
     return await axios({
         method: "post",
-        url: "https://cors-everywhere.herokuapp.com/http://52.40.170.79:5101/zapper",
+        url: "http://52.40.170.79:5101/zapper",
         data: data,
         headers: { 'Access-Control-Allow-Origin': '*', "Content-Type": "multipart/form-data" },
     }).then(function (response) {
